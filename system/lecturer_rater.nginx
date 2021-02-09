@@ -1,0 +1,14 @@
+server {
+    listen 5000;
+    server_name 23.111.202.183;
+    
+    location = /favicon.ico {
+        access_log off;
+        log_not_found off;
+    }
+    
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/home/airatk/lecturer.rater.api/app.sock;
+    }
+}

@@ -1,0 +1,12 @@
+[Unit]
+Description=Gunicorn instance to serve lecturer rater
+After=network.target
+
+[Service]
+User=airatk
+Group=www-data
+WorkingDirectory=/home/airatk/lecturer.rater.api
+ExecStart=/usr/local/bin/gunicorn --workers 3 --bind unix:app.sock -m 007 wsgi:app
+
+[Install]
+WantedBy=multi-user.target
